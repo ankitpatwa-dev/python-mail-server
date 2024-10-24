@@ -1,12 +1,25 @@
 import asyncio
 from aiosmtpd.controller import Controller
+import email
+
 
 class CustomSMTPHandler:
-    async def handle_DATA(self, *args,**kwargs):
+    async def handle_DATA(self, server, session, envelope):
         print('handle Data')
-        print('Arrgs',args)
-        print('kw',kwargs)
+        print('Arrgs',server.hostname, session.host_name, envelope.mail_from, envelope.content.decode('utf-8'))
+        print(envelope.original_content)
+        print('swad', email.message_from_string(envelope.content.decode('utf-8')))
+        email_message = email.message_from_string(envelope.content.decode('utf-8'))
+        print(email_message.get('body'), type(email_message))
+        # print('kw',kwargs)
         return '250 OK'
+
+
+    async def handle_HELO(self,server, session, envelope, hostname):
+        print('this is HELO method')
+        print(server,session,envelope,hostname)
+        print("end of HELO")
+        return '250 {}'.format(server.hostname)
 
     # async def handle_MAIL(self, *args, **kwargs):
     #     print('handel mail')
