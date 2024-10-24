@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  app:
+    build: .
+    # dockerfile: Dockerfile  # Uncomment this if you have a custom Dockerfile
+    ports:
+      - "8000:25"
+    volumes:
+      - .:/app
+    image: app:python
+    container_name: mail_server
+    command: python3 main.py
+    tty: true        # Keep terminal open
+

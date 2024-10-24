@@ -34,7 +34,7 @@ if __name__ == "__main__":
     try:
         # Start the server
         controller.start()
-        print("SMTP server running on port 25")
+        print("SMTP server running on port 25 jsut check it")
         asyncio.get_event_loop().run_forever()
     except Exception as e:
         print(f"Error: {e}")
