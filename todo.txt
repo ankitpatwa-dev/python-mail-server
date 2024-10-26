@@ -1,0 +1,2 @@
+1) save the content of mail in sqlite
+2) create django app and its docker-compose file
