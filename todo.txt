@@ -1,2 +1,4 @@
 1) save the content of mail in sqlite
 2) create django app and its docker-compose file
+3) designe UI
+4) setup Apis and models
